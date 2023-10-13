@@ -10,8 +10,9 @@ import flask
 #UM = UnMerged
 #C = Cleaned
 #M = Merged
-#S = Split
-#US = UnSplit
+#S = Sorted
+#US = UnSorted
+#CC = Completely Cleaned
 
 #importing the dataset
 
@@ -73,11 +74,6 @@ for CryptoDataFrame5, currency in zip(CryptoData1_UC_UM, CryptoData1_UC_M_S):
 CryptoData1_CC = []
 for currency in CryptoData1_UC_M_S:
     CryptoData1_CC.append(pd.read_csv(f'DataScienceAndMachineLearning\Data_Crypto_1\Cleaned_CryptoData1\{currency}_C.csv'))
-
-
-
-
-
 
 
 #Merging the datasets
