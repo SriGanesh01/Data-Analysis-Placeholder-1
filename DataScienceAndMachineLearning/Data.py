@@ -78,14 +78,15 @@ for currency in CryptoData1_UC_M_S:
 
 
 
+
+
 #Merging the datasets
 
-# print(CryptoData1_C_M.head(10))
-# print(CryptoData1_C_M.shape)
-# print(CryptoData1_C_M.info())
-# print(CryptoData1_C_M.describe())
-# print(CryptoData1_C_M.isnull().sum())
-# print(CryptoData1_C_M.duplicated().sum())
-# print()
-
-
+for RandomName in CryptoData1_CC:
+    print()
+    print(f"Head {RandomName.head(10)}\n")
+    print(f"Shape {RandomName.shape}\n")
+    print(f"Info {RandomName.info()}\n")
+    print(f"Desc {RandomName.describe()}\n")
+    print(f"Sum of IsNull {RandomName.isnull().sum()}\n")
+    print(f"Sum of Duplicates{RandomName.duplicated().sum()}\n")
