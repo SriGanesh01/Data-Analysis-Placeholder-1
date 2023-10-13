@@ -51,6 +51,17 @@ for Datafile_name in Datafile_names:
     print(CryptoDataFrame1['Currency'].unique())
 print()
 
+i = 0
+for RandomName in CryptoData1_UC_UM:
+    print()
+    print(f"Head of {CryptoData1_UC_M_S[i]} {RandomName.head(10)}\n")
+    print(f"Shape of {CryptoData1_UC_M_S[i]} {RandomName.shape}\n")
+    print(f"Info of {CryptoData1_UC_M_S[i]} {RandomName.info()}\n")
+    print(f"Description of {CryptoData1_UC_M_S[i]} {RandomName.describe()}\n")
+    print(f"Sum of IsNull of {CryptoData1_UC_M_S[i]} {RandomName.isnull().sum()}\n")
+    print(f"Sum of Duplicates of {CryptoData1_UC_M_S[i]} {RandomName.duplicated().sum()}\n")
+    i+=1
+
 ##Data Cleaning
 
 #remove null values
@@ -76,13 +87,6 @@ for currency in CryptoData1_UC_M_S:
     CryptoData1_CC.append(pd.read_csv(f'DataScienceAndMachineLearning\Data_Crypto_1\Cleaned_CryptoData1\{currency}_C.csv'))
 
 
+
 #Merging the datasets
 
-for RandomName in CryptoData1_CC:
-    print()
-    print(f"Head {RandomName.head(10)}\n")
-    print(f"Shape {RandomName.shape}\n")
-    print(f"Info {RandomName.info()}\n")
-    print(f"Desc {RandomName.describe()}\n")
-    print(f"Sum of IsNull {RandomName.isnull().sum()}\n")
-    print(f"Sum of Duplicates{RandomName.duplicated().sum()}\n")
