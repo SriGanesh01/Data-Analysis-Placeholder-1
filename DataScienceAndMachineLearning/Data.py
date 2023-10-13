@@ -5,20 +5,28 @@ import seaborn as sns
 import sklearn
 import flask
 
+##Naming Conventions
+#UC = UnCleaned
+#UM = UnMerged
+#C = Cleaned
+#M = Merged
+#S = Split
+#US = UnSplit
+
 #importing the dataset
 
-CryptoData1_UC_M = pd.read_csv('DataScienceAndMachineLearning\Data_Crypto_1\consolidated_coin_data.csv')
-print(CryptoData1_UC_M.head(10))
+CryptoData1_UC_M_US = pd.read_csv('DataScienceAndMachineLearning\Data_Crypto_1\consolidated_coin_data.csv')
+print(CryptoData1_UC_M_US.head(10))
 print
 
 #Splitting the dataset with respect to currency
-CryptoData1_UC_M_S = (sorted(CryptoData1_UC_M['Currency'].unique()))
-print(CryptoData1_UC_M_S)
-print(CryptoData1_UC_M['Currency'].nunique())
+CryptoData1_UC_M_S = (sorted(CryptoData1_UC_M_US['Currency'].unique()))
+print(CryptoData1_UC_M_S) 
+print(CryptoData1_UC_M_US['Currency'].nunique())
 print()
 
-for currency in CryptoData1_UC_M['Currency'].unique():
-    CryptoData1_UC_M[CryptoData1_UC_M['Currency'] == currency].to_csv(f'DataScienceAndMachineLearning\Data_Crypto_1\Split_CryptoData1\{currency}_UC.csv', index=False)
+for currency in CryptoData1_UC_M_US['Currency'].unique():
+    CryptoData1_UC_M_US[CryptoData1_UC_M_US['Currency'] == currency].to_csv(f'DataScienceAndMachineLearning\Data_Crypto_1\Split_CryptoData1\{currency}_UC.csv', index=False)
 
 Datafile_names = [r'DataScienceAndMachineLearning\Data_Crypto_1\Split_CryptoData1\binance-coin_UC.csv',
                 r'DataScienceAndMachineLearning\Data_Crypto_1\Split_CryptoData1\bitcoin_UC.csv',
@@ -61,4 +69,23 @@ print(CryptoData1_UC_UM[0].head(10))
 
 for CryptoDataFrame5, currency in zip(CryptoData1_UC_UM, CryptoData1_UC_M_S):
     CryptoDataFrame5.to_csv(f'DataScienceAndMachineLearning\Data_Crypto_1\Cleaned_CryptoData1\{currency}_C.csv', index=False)
+
+CryptoData1_CC = []
+for currency in CryptoData1_UC_M_S:
+    CryptoData1_CC.append(pd.read_csv(f'DataScienceAndMachineLearning\Data_Crypto_1\Cleaned_CryptoData1\{currency}_C.csv'))
+
+
+
+
+
+#Merging the datasets
+
+# print(CryptoData1_C_M.head(10))
+# print(CryptoData1_C_M.shape)
+# print(CryptoData1_C_M.info())
+# print(CryptoData1_C_M.describe())
+# print(CryptoData1_C_M.isnull().sum())
+# print(CryptoData1_C_M.duplicated().sum())
+# print()
+
 
